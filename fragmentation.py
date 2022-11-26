@@ -42,7 +42,8 @@ def hori():
         # vattribute2 = request.form.get('vattribute2')
         value = request.form.get('value')
         #horiQuery = db.engine.execute(f"CREATE TABLE `horizontal` AS SELECT `{attribute1}`,`{attribute2}` FROM `employee` WHERE `{attribute1}` >='{vattribute1}' AND `{attribute2}` >= '{vattribute2}'")
-        horiQuery = db.engine.execute(f"CREATE TABLE `horizontal` AS SELECT `emp_id`,`salary` FROM `employee` WHERE `salary` >= '{value}'")
+        horiQuery = db.engine.execute(f"CREATE TABLE `horizontal` AS SELECT * FROM `employee` WHERE `salary` >= '{value}'")
+        horiQuery1 = db.engine.execute(f"CREATE TABLE `horizontalOther` AS SELECT * FROM `employee` WHERE `salary` < '{value}'")
     return  render_template("hori.html",query=query)
 @app.route("/verti",methods=['POST','GET'])
 def verti():
